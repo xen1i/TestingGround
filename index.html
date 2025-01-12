@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Variant Launch A-Frame `ar-hit-test-simple` with Ring Reticle</title>
+    <title>Racetrack Hittest</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -79,7 +79,9 @@
           src="https://cdn.glitch.global/3e1642bd-4578-49d6-890b-eb456e36ef26/marsrover.glb?v=1686714169557"
           response-type="arraybuffer"
         ></a-asset-item>
+        <img id="racetrack" src="canvas.png">
       </a-assets>
+
 
       <a-camera position="0 1.2 6"></a-camera>
       <a-ring
@@ -94,20 +96,20 @@
       </a-ring>
       <!-- Environment for 2D and VR viewing. It's auto-hidden in AR mode. -->
       <a-entity
-        environment="preset: forest; lighting: none; shadow: none; lightPosition: 0 2.15 0"
+        environment="lighting: none; shadow: none; lightPosition: 0 2.15 0"
         hide-in-ar-mode
       ></a-entity>
 
       <a-entity id="model" position="-1 0 -3" scale="0.25 0.25 0.25" rotation="0 0 0">
         <a-entity
-          position="0 0 0"
+          position="30 0 0"
           rotation="0 0 0"
           gltf-model="#rover"
           animation-mixer
           shadow="cast: true; receive: false"
         ></a-entity>
       </a-entity>
-
+      <a-plane  id="RT" src="#racetrack" height="5" width="5" position="0 0.01 0" rotation="-90 0 0"></a-plane>
       <a-entity light="type: ambient; intensity: 0.5;"></a-entity>
       <a-light
         type="directional"
@@ -136,15 +138,7 @@
     </a-scene>
 
     <div id="text">
-      <h1>Variant Launch A-Frame `ar-hit-test-simple` with Ring Reticle</h1>
-
-      <p>
-        Model:
-        <a href="https://nasa3d.arc.nasa.gov/detail/curiosity-clean"
-          >Curiosity Rover</a
-        >
-        by NASA
-      </p>
+      <h1>A-Frame `ar-hit-test-simple` with Ring Reticle</h1>
       <p>
         Size: <button id="btn_full">Full</button>
         <button id="btn_half">1/2</button>
@@ -198,7 +192,7 @@
             let element = this.el;
             					session.addEventListener('select', function () {
             						let position = element.getAttribute('position');
-            						document.getElementById('model').setAttribute('position', position);
+            						document.getElementById('RT').setAttribute('position', position);
             					});
 
             session.requestReferenceSpace("viewer").then((space) => {
