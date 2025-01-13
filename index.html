@@ -73,12 +73,6 @@
       webxr="requiredFeatures:hit-test,local-floor;referenceSpaceType:local-floor"
     >
       <a-assets timeout="30000">
-        <!-- Model source: NASA -->
-        <a-asset-item
-          id="rover"
-          src="https://cdn.glitch.global/3e1642bd-4578-49d6-890b-eb456e36ef26/marsrover.glb?v=1686714169557"
-          response-type="arraybuffer"
-        ></a-asset-item>
         <img id="racetrack" src="canvas.png">
       </a-assets>
 
@@ -99,15 +93,6 @@
         environment="lighting: none; shadow: none; lightPosition: 0 2.15 0"
         hide-in-ar-mode
       ></a-entity>
-
-      <a-entity id="model" position="-1 0 -3" scale="0.25 0.25 0.25" rotation="0 0 0">
-        <a-entity
-          position="30 0 0"
-          rotation="0 0 0"
-          gltf-model="#rover"
-          animation-mixer
-          shadow="cast: true; receive: false"
-        ></a-entity>
       </a-entity>
       <a-plane  id="RT" src="#racetrack" height="2" width="2" position="0 0.01 0" rotation="-90 0 0"></a-plane>
       <a-entity light="type: ambient; intensity: 0.5;"></a-entity>
