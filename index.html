@@ -75,8 +75,6 @@
       <a-assets timeout="30000">
         <img id="racetrack" src="canvas.png">
       </a-assets>
-
-
       <a-camera position="0 1.2 6"></a-camera>
       <a-ring
         id="reticle"
@@ -94,8 +92,12 @@
         hide-in-ar-mode
       ></a-entity>
       </a-entity>
-      <a-plane  id="RT" src="#racetrack" height="2" width="2" position="0 0.01 0" rotation="-90 0 0"></a-plane>
+      <a-entity id="container" position="0 0.01 0">
+        <a-plane  id="RT" src="#racetrack" height="4" width="4" position="0 0.01 0" rotation="-90 0 0"></a-plane>
+        <a-entity id="car" gltf-model="url(bmw-326/cartest.glb)" position="0 0.03 0" rotation="0 90 0" scale="0.0005 0.0005 0.0005"></a-entity>
+      </a-entity>
       <a-entity light="type: ambient; intensity: 0.5;"></a-entity>
+      
       <a-light
         type="directional"
         light="castShadow: true;
@@ -177,7 +179,7 @@
             let element = this.el;
             					session.addEventListener('select', function () {
             						let position = element.getAttribute('position');
-            						document.getElementById('RT').setAttribute('position', position);
+            						document.getElementById('container').setAttribute('position', position);
             					});
 
             session.requestReferenceSpace("viewer").then((space) => {
