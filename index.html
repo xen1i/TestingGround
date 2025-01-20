@@ -89,8 +89,8 @@
     <!-- Environment for 2D and VR viewing. It's auto-hidden in AR mode. -->
     <a-entity environment="lighting: none; shadow: none; lightPosition: 0 2.15 0" hide-in-ar-mode></a-entity>
     </a-entity>
-    <a-entity id="container" position="0 0.01 0">
-      <a-plane id="racetrack_l" src="#racetrack_large" height="4" width="4" position="0 0.01 0" rotation="-90 0 0"visible="false" shadow="receive: false"></a-plane>
+    <a-entity id="container" position="0 0.01 0" scale="0.5 0.5 0.5">
+      <a-plane id="racetrack_l" src="#racetrack_large" height="4" width="4" position="0 0.01 0" rotation="-90 0 0"visible="true" shadow="receive: false"></a-plane>
       <a-plane id="racetrack_m" src="#racetrack_middle" height="4" width="4" position="0 0.01 0" rotation="-90 0 0" visible="false" shadow="receive: false"></a-plane>
       <a-plane id="racetrack_s" src="#racetrack_small" height="4" width="4" position="0 0.01 0" rotation="-90 0 0"visible="false"shadow="receive: false"></a-plane>
       <a-entity id="car" gltf-model="url(bmw-326/cartest.glb)" position="-1 0.03 1.7" rotation="0 90 0"
@@ -130,16 +130,11 @@
       Android or an iOS device using
       <a href="https://launch.variant3d.com/">Variant Launch</a>
     </p>
-
-    <p>
-      Paste this Glitch's preview URL into your Variant Launch Code generator
-      to get a url that works on Android or iOS.
-    </p>
   </div>
   <script>
     function setSize(scale) {
       document
-        .getElementById("model")
+        .getElementById("container")
         .setAttribute("scale", { x: scale, y: scale, z: scale });
     }
     document.getElementById("btn_full").onclick = setSize.bind(this, 1);
